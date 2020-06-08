@@ -1,0 +1,55 @@
+server:
+  port: 8080
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  zipkin:
+    base-url: http://localhost:8090
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        #后台聚合服务
+        - id: front-admin
+          #目标服务路径
+          #front-admin-server 对应目标服务的 spring.application.name
+          uri: lb://front-admin-server
+          order: 8
+          #路由条件
+          predicates:
+            - Path=/front-admin/**
+          filters:
+            - StripPrefix=0
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    # 心跳间隔(s)
+    lease-renewal-interval-in-seconds: 5
+    # Eureka服务端剔除服务的时间(s)
+    lease-expiration-duration-in-seconds: 10
+  client:
+    service-url:
+      defaultZone: http://localhost:8002/eureka/
+    # 从Eureka服务端获取注册信息的间隔说明(s)
+    registry-fetch-interval-seconds: 10
+
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    enabled: false
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000 #缺省为1000
+
+ribbon:
+  ReadTimeout: 300000
+  ConnectTimeout: 300000

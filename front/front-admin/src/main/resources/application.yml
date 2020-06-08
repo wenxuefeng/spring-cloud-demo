@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: front-admin-server
+  profiles:
+    active: local
