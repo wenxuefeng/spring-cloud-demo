@@ -7,6 +7,19 @@ spring:
     allow-bean-definition-overriding: true
   zipkin:
     base-url: http://localhost:8090
+  #设置全局事务相关配置
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: spring_cloud_tx_group
+  #设置数据库配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.98.81:3306/catering_cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 163@.com
+mybatis-plus:
+  mapperLocations: classpath:mapper/*.xml
 eureka:
   instance:
     prefer-ip-address: true

@@ -27,6 +27,18 @@ public class OderFeignClientFallback implements FallbackFactory<OrderFeignClient
             public void feignTest() {
                 Result.fail("调用order/feignTest接口失败");
             }
+
+            /**
+             * 退款
+             *
+             * @author: wxf
+             * @date: 2020/6/11 18:04
+             * @return: {@link Result < String>}
+             **/
+            @Override
+            public Result<String> orderRefund() {
+                return Result.fail("退款失败");
+            }
         };
     }
 }

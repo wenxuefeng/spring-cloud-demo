@@ -21,6 +21,19 @@ public class UserFeignClientFallback implements FallbackFactory<UserFeignClient>
             public Result<String> test() {
                 return Result.fail("调用user/test接口失败");
             }
+
+            /**
+             * 用户订单退款
+             *
+             * @param status 1-表示抛异常回滚
+             * @author: wxf
+             * @date: 2020/6/12 11:50
+             * @return: {@link Result< String>}
+             **/
+            @Override
+            public Result<String> userOrderRefund(Integer status) {
+                return Result.fail("用户订单退款失败");
+            }
         };
     }
 }

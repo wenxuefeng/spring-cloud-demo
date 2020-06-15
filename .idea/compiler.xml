@@ -13,15 +13,20 @@
         <module name="zipkin" />
         <module name="front-admin" />
         <module name="common-tools" />
+        <module name="common-mybatis" />
         <module name="order-server" />
         <module name="order-client" />
         <module name="user-server" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="common-mybatis" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-parameters" />
+      <module name="common-mybatis" options="-parameters" />
       <module name="common-tools" options="-parameters" />
       <module name="eureka" options="-parameters" />
       <module name="front" options="-parameters" />
