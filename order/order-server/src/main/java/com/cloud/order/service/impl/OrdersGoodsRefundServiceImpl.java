@@ -32,7 +32,6 @@ public class OrdersGoodsRefundServiceImpl extends ServiceImpl<OrdersGoodsRefundM
      * @version 1.1.0
      **/
     @Override
-    @GlobalTransactional(name = "order-refund", rollbackFor = Exception.class)
     public String orderRefund() {
         OrdersGoodsRefundDTO dto = new OrdersGoodsRefundDTO();
         dto.setId(IdWorker.getId())
