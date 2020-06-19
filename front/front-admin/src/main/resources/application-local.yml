@@ -7,6 +7,11 @@ spring:
     allow-bean-definition-overriding: true
   zipkin:
     base-url: http://localhost:8090
+  #设置全局事务相关配置
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: spring_cloud_tx_group
 eureka:
   instance:
     prefer-ip-address: true
@@ -20,7 +25,6 @@ eureka:
       defaultZone: http://localhost:8002/eureka/
     # 从Eureka服务端获取注册信息的间隔说明(s)
     registry-fetch-interval-seconds: 10
-
 feign:
   hystrix:
     enabled: true
@@ -33,7 +37,6 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 60000 #缺省为1000
-
 ribbon:
   ReadTimeout: 300000
   ConnectTimeout: 300000

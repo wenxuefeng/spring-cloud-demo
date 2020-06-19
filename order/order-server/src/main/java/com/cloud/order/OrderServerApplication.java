@@ -12,7 +12,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication(scanBasePackages = "com.cloud",exclude = DataSourceAutoConfiguration.class)
 @EnableDiscoveryClient
 @EnableFeignClients("com.cloud")
-@MapperScan("com.cloud.order.dao")
 @EnableAutoDataSourceProxy
 @Slf4j
 public class OrderServerApplication {
