@@ -53,4 +53,17 @@
             <version>${seata.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <targetPath>META-INF</targetPath>
+                <filtering>false</filtering>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.conf</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>
