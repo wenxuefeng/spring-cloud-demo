@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
  * @description 简单描述
  **/
 @Data
+@Accessors(chain = true)
 @TableName("catering_orders_goods_refund")
 public class OrdersGoodsRefundEntity {
     @TableId(value = "id")

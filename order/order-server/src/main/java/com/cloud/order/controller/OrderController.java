@@ -1,19 +1,12 @@
 package com.cloud.order.controller;
 
-import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.cloud.common.util.Result;
-import com.cloud.order.entity.OrdersGoodsRefundEntity;
-import com.cloud.order.feign.dto.OrdersGoodsRefundDTO;
 import com.cloud.order.service.OrdersGoodsRefundService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
 
 /**
  * 描述
@@ -46,5 +39,19 @@ public class OrderController {
     @GetMapping("orderRefund")
     public Result<String> orderRefund() {
         return Result.succ(ordersGoodsRefundService.orderRefund());
+    }
+
+    /**
+     * 异步方法 异步订单退款
+     * 返回 true 退款成功 false 退款失败
+     * @author: wxf
+     * @date: 2020/7/11 9:54
+     * @return: {@link boolean}
+     * @version 1.1.0
+     **/
+    @GetMapping("asyncOrderRefund")
+    public Result<String> asyncOrderRefund() {
+        ordersGoodsRefundService.asyncOrderRefund();
+        return Result.succ("退款成功");
     }
 }
